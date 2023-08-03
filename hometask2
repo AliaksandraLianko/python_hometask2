@@ -1,0 +1,27 @@
+
+import string
+import random
+
+# create empty list to store dicts
+dictList = []
+# create loop for ceating from 2 to 10 dicts
+for _ in range(random.randint(2, 10)):
+    # set size of one dict random but up to 26 as there are 26 letters and they cannot appear twice in one dict
+    size = random.randint(1, 26)
+    # set keys in dicts to be lowercase letters and use limit of 26 for number on keys in one dict
+    keys = random.sample(string.ascii_lowercase, size)
+    # set values to be random from 1 to 100 with total number of values random but with top limit 26
+    values = (random.randint(1, 100) for _ in range(size))
+    # create dicts from the pairs of keys and values
+    oneDict = dict(zip(keys, values))
+    # add created dicts to the list dictList one by one
+    dictList.append(oneDict)
+# print created list of dicts
+print(dictList)
+# print number of dicts in the created list of dicts
+print(len(dictList))
+
+# create merged dict from all dicts in dictList
+mixedDict = {k: v for d in dictList for k, v in d.items()}
+# print created mixed dict
+print(mixedDict)
